@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Modern Shop</title>
+    <script src="../../assets/admin/vendor/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../../assets/admin/vendor/fontawesome-free-5.15.3-web/css/all.min.css" rel="stylesheet" />
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/client/css/bootstrap.css">
+
+    <link href="../../Content/home-style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div id="navbar">
+        <ul class="navbar-nav">
+            <div class="navbar-left">
+                <li class="navbar-item">MODERN SHOP</li>
+            </div>
+            <div class="navbar-right">
+                <li class="navbar-item nav-item-right">
+                    <div class="product-menu-dropdown">
+                                <span>
+                                    Sản phẩm
+                                </span>
+                        <div class="menu-dropdown-container">
+                            <ul class="menu-dropdown">
+                                <li class="dropdown-item">Thông tin cá nhân</li>
+                                <li class="dropdown-item">Đổi mật khẩu</li>
+                                <li class="dropdown-item">Đăng xuất</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="navbar-item nav-item-right">Khuyến mãi</li>
+                <li class="navbar-item nav-item-right">
+                    <div class="search-container">
+                        <input type="text" id="txt-search">
+                        <button id="btn-search"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="shopping-cart-container">
+                        <div class="order-count-container">
+                            <p id="shopping-cart-order">0</p>
+                        </div>
+                        <button id="btn-shopping-cart"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </li>
+                <li class="navbar-item nav-item-right">
+                    <div class="user-menu-dropdown">
+                        <div class="menu-dropdown-container">
+                            <ul class="menu-dropdown">
+                                <li class="dropdown-item">Thông tin cá nhân</li>
+                                <li class="dropdown-item">Đổi mật khẩu</li>
+                                <li class="dropdown-item">Đăng xuất</li>
+                            </ul>
+                        </div>
+                        <button id="btn-user">
+                            <i class="fas fa-user-circle"></i>
+                            <span>
+                                Username
+                            </span>
+                        </button>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <button id="btn-user-login">
+                            <i class="fas fa-user-circle"></i>
+                            <span>
+                                Đăng nhập
+                            </span>
+                        </button>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
+<div id="content">
+    <div class="content-container">
+        <div class="contain-left">
+            <div class="img-leftside">
+                <img src="./a.png" class="img-detail">
+                <img src="./a.png" class="img-detail">
+                <img src="./a.png" class="img-detail">
+                <img src="./a.png" class="img-detail">
+            </div>
+            <div class="img-rightside">
+                <img src="./a.png" class="img-detail">
+                <img src="./a.png" class="img-detail">
+                <img src="./a.png" class="img-detail">
+                <img src="./a.png" class="img-detail">
+            </div>
+        </div>
+        <div class="contain-right">
+            <p class="product-detail-name">Tên sản phẩm</p>
+            <p class="product-detail-price">Giá sản phẩm</p>
+            <div class="option-container">
+                <div class="select-container">
+                    <p class="select-title">Size:</p>
+                    <select id="cbo-size" class="form-control">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                    </select>
+                </div>
+                <div class="amount-container">
+                    <p class="amount-title">Số lượng:</p>
+                    <input id="num-amount" type="number" value="1" min="1" max="500" class="form-control">
+                </div>
+                <button id="btn-add-to-card" class="btn">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="information-container">
+                <p class="table-title">Thông tin sản phẩm</p>
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="table-col-6">Sản phẩm</td>
+                        <td class="table-col-6">giá trị</td>
+                    </tr>
+                    <tr>
+                        <td class="table-col-6">Loại sản phẩm</td>
+                        <td class="table-col-6">giá trị</td>
+                    </tr>
+                    <tr>
+                        <td class="table-col-6">Đối tượng sử dụng</td>
+                        <td class="table-col-6">giá trị</td>
+                    </tr>
+                    <tr>
+                        <td class="table-col-6">Chất liệu</td>
+                        <td class="table-col-6">giá trị</td>
+                    </tr>
+                </table>
+                <div class="about-container">
+                    <p class="about-title">Mô tả</p>
+                    <textarea id="txt-about" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div id="footer-flex-container">
+        <div class="flex-component">
+            <p class="footer-title">Kết nối với chúng tôi</p>
+            <div class="app-icon">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-instagram-square"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+        <div class="flex-component">
+            <p class="footer-title">Thương hiệu thời trang modern shop</p>
+            <p class="footer-content">Email mua hàng: saleonline@modernshop.com.vn</p>
+            <p class="footer-content">Hotline: 0868.789.880</p>
+            <p class="footer-content">Tìm địa chỉ CỬA HÀNG gần bạn</p>
+        </div>
+        <div class="flex-component">
+            <p class="footer-title">Về chúng tôi</p>
+            <p class="footer-content">Giới thiệu MODERN SHOP</p>
+            <p class="footer-content">Liên hệ</p>
+            <p class="footer-content">Tuyển dụng</p>
+            <p class="footer-content">Tin tức MODERN SHOP</p>
+        </div>
+        <div class="flex-component">
+            <p class="footer-title">Trợ giúp</p>
+            <p class="footer-content">Hướng dẫn mua hàng</p>
+            <p class="footer-content">Hướng dẫn chọn size</p>
+            <p class="footer-content">Câu hỏi thường gặp</p>
+        </div>
+        <div class="flex-component">
+            <p class="footer-title">Chính sách</p>
+            <p class="footer-content">Chính sách khách VIP</p>
+            <p class="footer-content">Thanh toán - Giao hàng</p>
+            <p class="footer-content">Chính sách đổi hàng</p>
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/client/js/bootstrap.bundle.js"></script>
+
+</body>
+</html>

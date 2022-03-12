@@ -1,0 +1,25 @@
+﻿#km-container , #tb-container {
+    min-height: 10rem !important;
+}
+
+#employee-information-content {
+    width: 50%;
+    margin: auto;
+}
+
+    #employee-information-content table td {
+        padding: .5rem 0;
+    }
+
+    #employee-information-content table tr td:first-child {
+        text-align:right;
+    }
+
+    #employee-information-content table tr td:last-child {
+        text-align: left;
+        padding-left: .8rem;
+    }
+
+.user-infor{
+    margin: .6rem 0 !important;
+}

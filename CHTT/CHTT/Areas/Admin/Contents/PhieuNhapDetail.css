@@ -1,0 +1,33 @@
+﻿#form-pn-information {
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width:100%;
+}
+
+#flex-left-side, #flex-right-side {
+    flex-basis: 49%;
+}
+
+#inline-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#inline-row > .form-group{
+    flex-basis: 31%;
+}
+
+.disabled-background {
+    background-color: white !important;
+}
+
+#btn-save-pn, #btn-cancel-pn{
+    display:none;
+}
+
+.table-title{
+    margin: .6rem 0 !important;
+}

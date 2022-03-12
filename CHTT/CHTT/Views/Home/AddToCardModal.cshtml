@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+<div id="atc-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content" id="modal-main-container">
+            <div class="modal-header">
+                <h4 class="modal-title">THÊM VÀO GIỎ HÀNG</h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-flex">
+                    <div class="flex-leftside">
+                        <div id="product-modal-img">
+                            <img src="~/App_Data.png"/>
+                        </div>
+                    </div>
+                    <div class="flex-rightside">
+                        <div class="form-group">
+                            <p id="product-modal-name">
+                                ÁO THUN CỔ TRÒN THIÊN NHIÊN KÌ VĨ
+                            </p>
+                            <p id="product-modal-price">
+                                500.000 VND
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <div class="display-inline">
+                                <label class="label-control">Chọn size: </label>
+                                <select class="form-control" id="size-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="display-inline">
+                                <label class="label-control">Số lượng: </label>
+                                <div class="sl-control-container">
+                                    <button class="minus-button" onclick="minus()">&minus;</button>
+                                    <input type="number" min="1" max="500" value="1" id="sl-control" />
+                                    <button class="plus-button" onclick="plus()">&plus;</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn-save-custom btn btn-primary" id="btn-save">Đồng ý</button>
+                            <button class="btn-cancel-custom btn btn-primary" id="btn-cancel">Hủy bỏ</button>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+    </div>
+</div>
+

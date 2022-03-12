@@ -1,0 +1,116 @@
+﻿@model CHTT.Areas.Admin.Models.PhieuNhapModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/PhieuNhapDetail.css" rel="stylesheet" />
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="font-weight-bold text-primary table-title">Thông tin phiếu</h6>
+            <button class="btn btn-outline-primary btn-md" id="btn-edit-pn">
+                <span>
+                    <i class="far fa-edit"></i>
+                    Chỉnh sửa
+                </span>
+            </button>
+            <button class="btn btn-primary btn-md" id="btn-save-pn">
+                <span>
+                    Lưu
+                </span>
+            </button>
+            <button class="btn btn-dark btn-md" id="btn-cancel-pn">
+                <span>
+                    Hủy bỏ
+                </span>
+            </button>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "form-pn-information" }))
+            {
+            <div id="flex-left-side">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.MaPN, "Mã số:", new { @class = "label-control" })
+                    @Html.TextBoxFor(x => x.MaPN, new { @class = "form-control", @id = "mpn-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.MaNCC, "Nhà cung cấp", new { @class = "label-control" })
+                    @Html.DropDownListFor(x => x.MaNCC, new SelectList(ViewBag.NCC, "MaNCC", "TenNCC", null), "Vui lòng chọn một", new { @class = "form-control", @id = "ncc-control" })
+                </div>
+            </div>
+            <div id="flex-right-side">
+                <div id="inline-row">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SLTH, "SL tổng hợp:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.SLTH, new { @class = "form-control", @id = "slth-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SLCT, "SL chi tiết:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.SLCT, new { @class = "form-control", @id = "slct-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.TongGia, "Tổng giá:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.TongGia, new { @class = "form-control", @id = "tg-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.NgayNhap, "Ngày giờ nhập:", new { @class = "label-control" })
+                    @Html.TextBoxFor(x=>x.NgayNhap, new { @class = "form-control", @id = "ngaynhap-control", @type = "datetime-local" ,@value= Html.Raw(ViewBag.NgayNhapConvert) })
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="font-weight-bold text-primary table-title">Chi tiết phiếu</h6>
+            <button class="btn btn-outline-primary btn-md" id="btn-add-ctpn">
+                <span>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Thêm SP mới
+                </span>
+            </button>
+            <button class="btn btn-outline-primary btn-md" id="btn-add-ctpn-old">
+                <span>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Thêm SP đã có
+                </span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="PNTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>Mã sản phẩm</td>
+                            <td>Số lượng</td>
+                            <td>Giá nhập</td>
+                            <td>Hành động</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="aoe-container">
+    
+</div>
+
+<div id="add-old-container">
+    @Html.Partial("AddOldModal")
+</div>
+<script>
+    var NgayNhapConvert = '@Html.Raw(ViewBag.NgayNhapConvert)';
+</script>
+<script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminPhieuNhapDetail.js"></script>
+

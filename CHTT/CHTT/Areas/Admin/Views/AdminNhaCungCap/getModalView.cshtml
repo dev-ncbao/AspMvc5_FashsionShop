@@ -1,0 +1,44 @@
+﻿@model Model.NhaCC
+
+@{
+    Layout = null;
+}
+
+<div id="aoe-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddOrEdit", "AdminNhaCungCap", FormMethod.Post, new { @id = "form-ncc" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false)
+                    @Html.HiddenFor(x => x.MaNCC, new { @id="mancc-control"})
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.TenNCC, new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.TenNCC, new { @class = "form-control" ,@id="tenncc-control"})
+                        <span class="validation-message">Vui lòng không để trống, tối đa 200 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.DiaChi, new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control", @id = "diachi-control" })
+                        <span class="validation-message">Vui lòng không để trống, tối đa 300 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SoDienThoai, new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control", @id = "sdt-control" })
+                        <span class="validation-message">Vui lòng không để trống và nhập đúng định dạng.</span>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-button">Lưu</button>
+                <button class="btn btn-dark" id="reset-button">Làm mới</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="content-banner">
+    <!--
+                    <p style="text-align: center;font-size: 5rem;border-bottom:1px solid black">Banner</p>
+    -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="#"><img class="d-block w-100 img-banner" src="/assets/client/banner/Slide1.jpg"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="#"><img class="d-block w-100 img-banner" src="/assets/client/banner/Slide2.jpg"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="#"><img class="d-block w-100 img-banner" src="/assets/client/banner/Slide3.png"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="#"><img class="d-block w-100 img-banner" src="/assets/client/banner/Slide4.png"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="#"><img class="d-block w-100 img-banner" src="/assets/client/banner/Slide6.webp"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="#"><img class="d-block w-100 img-banner" src="/assets/client/banner/Slide7.jpg"></a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div id="product-category">
+    <div class="product-category-flex">
+        <p class="category-title">Sản phẩm mới</p>
+        <div class="product-category-container" id="list-new-product">
+            
+        </div>
+        <div class="product-category-footer">
+            <p id="new-product">Xem thêm <i class="fas fa-caret-down navbar-dropdown-icon"></i></p>
+        </div>
+    </div>
+    <div class="product-category-flex">
+        <p class="category-title">Sản phẩm bán chạy</p>
+        <div class="product-category-container" id="list-hot-product">
+
+        </div>
+        <div class="product-category-footer">
+            <p id="hot-product">Xem thêm <i class="fas fa-caret-down navbar-dropdown-icon"></i></p>
+        </div>
+    </div>
+
+</div>
+
+<script src="/Scripts/controller/HomeController.js"></script>

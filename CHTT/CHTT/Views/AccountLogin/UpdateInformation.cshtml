@@ -1,0 +1,61 @@
+﻿@model Model.Library.KhachHang
+
+@{
+    Layout = null;
+}
+
+<div id="ui-modal-container">
+    <div id="ui-form">
+        <div class="form-title">
+            <p class="ui-title">
+                Thông tin cá nhân
+            </p>
+        </div>
+        <div class="form-content">
+            <div class="form-group">
+                @Html.LabelFor(x => x.HoTen, "Họ tên:", new { @class = "frm-label" })
+                @Html.TextBoxFor(x => x.HoTen, new { @class = "form-control", @id = "ui-hoten-control" })
+            </div>
+            <div id="gt-ns-container">
+                <div class="form-group" id="gt-container">
+                    @Html.LabelFor(x => x.Phai, "Giới tính:", new { @class = "frm-label" })
+                    <div class="form-check gt-control">
+                        @Html.RadioButtonFor(x => x.Phai, "Nam", new { @class = "form-check-input", @id = "ui-PhaiNam" })
+                        <label for="ui-PhaiNam" class="form-check-label frm-label">Nam</label>
+                    </div>
+                    <div class="form-check gt-control">
+                        @Html.RadioButtonFor(x => x.Phai, "Nữ", new { @class = "form-check-input", @id = "ui-PhaiNu" })
+                        <label for="ui-PhaiNu" class="form-check-label frm-label">Nữ</label>
+                    </div>
+                </div>
+                <div class="form-group" id="ns-container">
+                    @Html.LabelFor(x => x.NgaySinh, "Ngày sinh:", new { @class = "frm-label" })
+                    <input type="date" class="form-control" value="@ViewBag.NgaySinhInput" id="ui-ngaysinh-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.SoDienThoai, "Số điện thoại", new { @class = "frm-label" })
+                @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control", @id = "ui-sdt-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email, "Email:", new { @class = "frm-label" })
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "ui-email-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.DiaChi, "Địa chỉ:", new { @class = "frm-label" })
+                @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control", @id = "ui-diachi-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.TaiKhoan, "Tài khoản:", new { @class = "frm-label disabled" })
+                @Html.TextBoxFor(x => x.TaiKhoan, new { @class = "form-control", @id = "ui-tk-control" })
+            </div>
+            <div class="form-group">
+                <div class="frm-ui-button">
+                    <div class="form-control" id="btn-ui">Cập nhật</div>
+                    <div class="form-control" id="btn-close-ui">Đóng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

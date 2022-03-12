@@ -1,0 +1,59 @@
+﻿.modal-body {
+    color: black;
+    font-size: .9rem;
+}
+
+.modal-header {
+    color: #4e73df;
+    height: 3.5rem;
+}
+
+.modal-content {
+    top: 1.5rem !important;
+    margin-bottom: 5.5rem !important;
+}
+
+.close {
+    float: right;
+}
+
+    .close > :first-child {
+        margin-right: .5rem;
+    }
+
+#add-new-button {
+    float: right;
+}
+
+#table-title {
+    float:left;
+    margin: .6rem 0;
+}
+
+.edit-button, .delete-button{
+    margin: .3rem;
+}
+
+.input-success-outline {
+    border: 2px solid #4CAF50;
+}
+
+.input-danger-outline {
+    border: 2px solid red;
+}
+
+.validation-message {
+    font-size: .75rem;
+    position: relative;
+    top: .2rem;
+    color: red;
+}
+
+.noti-icon {
+    margin-right: .7rem;
+}
+
+.table-title {
+    float: left;
+    margin: .6rem 0 !important;
+}

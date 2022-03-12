@@ -1,0 +1,43 @@
+﻿@model Model.Library.SPSize
+
+@{
+    Layout = null;
+}
+
+<div id="aoe-sizeprice-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Size,"Size:" ,new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.Size, new { @class = "form-control" })
+                        <span class="validation-message">Vui lòng không để trống - tối đa 10 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Gia,"Giá:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.Gia, new { @class = "form-control" })
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SoLuong,"Số lượng:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.SoLuong, new { @class = "form-control" })
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="btn-submit-size-form">Lưu</button>
+                <button class="btn btn-dark" id="btn-reset-size-form">Làm mới</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

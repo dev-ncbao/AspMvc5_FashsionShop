@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "AccountInformation";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/AdminHomeController.css" rel="stylesheet" />
+<!-- Page Content -->
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title user-infor">Thông tin cá nhân</h6>
+        <button class="btn btn-outline-primary btn-md" id="btn-edit-information">
+            <span>
+                <i class="far fa-edit"></i>
+                Đổi mật khẩu
+            </span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div id="employee-information-container">
+            <div id="employee-information-content">
+                <table>
+
+                    <tr>
+                        <td>Mã nhân viên:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Họ và tên:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Giới tính:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày sinh:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Chức vụ:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Mức lương:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Quê quán:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                    <tr>
+                        <td>Nơi ở hiện nay:</td>
+                        <td>Chưa có thông tin</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="changepass-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ĐỔI MẬT KHẨU</h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label class="label-control">Mật khẩu hiện tại:</label>
+                        <input type="password" name="name" id="cur-pass" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Mật khẩu mới:</label>
+                        <input type="password" name="name" id="new-pass" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Nhập lại mật khẩu mới:</label>
+                        <input type="password" name="name" id="new-pass-again" class="form-control"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-button">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/UserInformationController.js"></script>
+

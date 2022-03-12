@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div class="content-container">
+        <div class="contain-left">
+            <div class="img-leftside">
+                
+            </div>
+            <div class="img-rightside">
+
+            </div>
+        </div>
+        <div class="contain-right">
+            <p class="product-detail-name">Tên sản phẩm</p>
+            <p class="product-detail-price">Giá sản phẩm</p>
+            <div class="option-container">
+                <div class="select-container">
+                    <p class="select-title">Size:</p>
+                    <select id="cbo-size" class="form-control">
+                        
+                    </select>
+                </div>
+                <div class="amount-container">
+                    <p class="amount-title">Số lượng:</p>
+                    <input id="num-amount" type="number" value="1" min="1" max="500" class="form-control">
+                </div>
+                <button id="btn-add-to-cart" class="btn">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="information-container">
+                <p class="table-title">Thông tin sản phẩm</p>
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="table-col-6">Sản phẩm</td>
+                        <td class="table-col-6">Đang cập nhật...</td>
+                    </tr>
+                    <tr>
+                        <td class="table-col-6">Loại sản phẩm</td>
+                        <td class="table-col-6">Đang cập nhật...</td>
+                    </tr>
+                    <tr>
+                        <td class="table-col-6">Đối tượng sử dụng</td>
+                        <td class="table-col-6">Đang cập nhật...</td>
+                    </tr>
+                    <tr>
+                        <td class="table-col-6">Chất liệu</td>
+                        <td class="table-col-6">Đang cập nhật...</td>
+                    </tr>
+                </table>
+                <div class="about-container">
+                    <p class="about-title">Mô tả</p>
+                    <textarea id="txt-about" class="form-control" disabled>Đang cập nhật...</textarea>
+                </div>
+
+                <div class="another-container">
+                    <p class="another-title">Sản phẩm tương tự</p>
+                    <div class="another-content">Đang cập nhật...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="txt-MaSP" data-id="@ViewBag.MaSP"></div>
+<script src="~/Scripts/controller/ProductDetailController.js"></script>

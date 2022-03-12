@@ -1,0 +1,23 @@
+﻿#gt-ns-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#gt-container, #ns-container {
+    flex-basis: 48%;
+}
+
+.gt-control {
+    margin-left: 2rem;
+    float: left;
+}
+
+.label-control{
+    width: 100%;
+}
+
+.table-title {
+    float: left;
+    margin: .6rem 0 !important;
+}

@@ -1,0 +1,156 @@
+﻿    <!DOCTYPE html>
+
+    <html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Modern Shop</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <script src="/assets/admin/vendor/jquery/jquery-3.6.0.min.js"></script>
+        <link href="/assets/admin/vendor/fontawesome-free-5.15.3-web/css/all.min.css" rel="stylesheet" />
+        <!--Font-->
+        <link rel="stylesheet" href="../../assets/client/css/bootstrap.css">
+        <link href="/Content/home-style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="navbar">
+                <ul class="navbar-nav">
+                    <div class="navbar-left">
+                        <li class="navbar-item bottom-animation" id="btn-home">MODERN SHOP</li>
+                    </div>
+                    <div class="navbar-right">
+                        <li class="navbar-item nav-item-right bottom-animation" id="btn-product">
+                            <div class="product-menu-dropdown">
+                                <span>
+                                    Sản phẩm
+                                </span>
+                                <i class="fas fa-caret-down navbar-dropdown-icon"></i>
+                                <div class="menu-dropdown-container">
+                                    <ul class="menu-dropdown">
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="navbar-item nav-item-right bottom-animation" id="btn-sale">Khuyến mãi</li>
+                        <li class="navbar-item nav-item-right">
+                            <div class="search-container">
+                                <input type="text" id="txt-search" placeholder="Nhập tên sản phẩm muốn tìm ...">
+                                <button id="btn-search"><i class="fas fa-search"></i></button>
+                            </div>
+                            <div class="shopping-cart-container">
+                                <div class="order-count-container">
+                                    <p id="shopping-cart-order">0</p>
+                                </div>
+                                <button id="btn-shopping-cart"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </li>
+                        <li class="navbar-item nav-item-right bottom-animation" id="btn-user-container">
+                            <div class="user-menu-dropdown">
+                                <div class="menu-dropdown-container">
+                                    <ul class="menu-dropdown">
+                                        <li class="dropdown-item"><button id="btn-user-information">Thông tin cá nhân</button></li>
+                                        <li class="dropdown-item"><button id="btn-order-history">Lịch sử mua hàng</button></li>
+                                        <li class="dropdown-item"><button id="btn-change-pass">Đổi mật khẩu</button></li>
+                                        <li class="dropdown-item"><button id="btn-logout">Đăng xuất</button></li>
+                                    </ul>
+                                </div>
+                                <button id="btn-user">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>
+                                        Username
+                                    </span>
+                                    <i class="fas fa-caret-down navbar-dropdown-icon"></i>
+                                </button>
+                            </div>
+                            <div class="user-menu-dropdown">
+                                <button id="btn-user-login">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>
+                                        Đăng nhập
+                                    </span>
+                                </button>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            @RenderBody()
+
+        </div>
+        <div id="footer">
+            <div id="footer-flex-container">
+                <div class="flex-component">
+                    <p class="footer-title">Kết nối với chúng tôi</p>
+                    <div class="app-icon">
+                        <i class="fab fa-facebook-square" style="color: #1877f2"></i>
+                        <i class="fab fa-youtube" style="color: rgba(255,20,20,1)"></i>
+                        @*<i class="fab fa-instagram-square"></i>*@
+                        <i class="fab fa-twitter" style="color: #1877f2"></i>
+                    </div>
+                    <div id="shop-location">
+                        <p class="footer-content">Bản đồ đang cập nhật</p>
+                    </div>
+                </div>
+                <div class="flex-component">
+                    <p class="footer-title">Thương hiệu thời trang modern shop</p>
+                    <p class="footer-content">Email mua hàng: saleonline@modernshop.com.vn</p>
+                    <p class="footer-content">Hotline: 0868.789.880</p>
+                    <p class="footer-content">Tìm địa chỉ CỬA HÀNG gần bạn</p>
+                </div>
+                <div class="flex-component">
+                    <p class="footer-title">Về chúng tôi</p>
+                    <p class="footer-content">Giới thiệu MODERN SHOP</p>
+                    <p class="footer-content">Liên hệ</p>
+                    <p class="footer-content">Tuyển dụng</p>
+                    <p class="footer-content">Tin tức MODERN SHOP</p>
+                </div>
+                <div class="flex-component">
+                    <p class="footer-title">Trợ giúp</p>
+                    <p class="footer-content">Hướng dẫn mua hàng</p>
+                    <p class="footer-content">Hướng dẫn chọn size</p>
+                    <p class="footer-content">Câu hỏi thường gặp</p>
+                </div>
+                <div class="flex-component">
+                    <p class="footer-title">Chính sách</p>
+                    <p class="footer-content">Chính sách khách VIP</p>
+                    <p class="footer-content">Thanh toán - Giao hàng</p>
+                    <p class="footer-content">Chính sách đổi hàng</p>
+                </div>
+            </div>
+        </div>
+        <div id="login-container">
+
+        </div>
+        <div id="register-container">
+
+        </div>
+        <div id="lopass-container">
+
+        </div>
+        <div id="atc-container">
+
+        </div>
+        <div id="spc-container">
+
+        </div>
+        <div id="changepass-container">
+
+        </div>
+        <div id="ui-container">
+
+        </div>
+        <div id="page-backdrop"></div>
+        <script src="/assets/client/js/bootstrap.bundle.js"></script>
+        <script src="/assets/admin/vendor/notify/notify.min.js"></script>
+        <script src="/Scripts/controller/layout-js.js"></script>
+    </body>
+    </html>

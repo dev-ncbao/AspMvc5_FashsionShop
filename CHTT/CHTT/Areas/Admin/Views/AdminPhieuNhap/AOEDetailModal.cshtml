@@ -1,0 +1,52 @@
+﻿@model Model.Library.PhieuNhapCT
+
+@{
+    Layout = null;
+}
+
+<div id="aoe-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <span>Nhớ thêm thông tin đầy đủ của sau nhé.</span>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "form-pnct" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false)
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MaSP, "Mã số SP:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.MaSP, new { @class = "form-control", @id = "msp-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Tên SP:</label>
+                        <input type="text" name="TenSP" class="form-control" id="tensp-control" />
+                        <span class="validation-message">Vui lòng không để trống - tối đa 300 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SoLuong, "Số lượng", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.SoLuong, new { @class = "form-control", @id = "sl-control" })
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.GiaNhap, "Giá nhập:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.GiaNhap, new { @class = "form-control", @id = "gn-control" })
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-button">Lưu</button>
+                <button class="btn btn-dark" id="reset-button">Làm mới</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

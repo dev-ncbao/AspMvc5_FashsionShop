@@ -1,0 +1,101 @@
+﻿#top-page-alert {
+    display: none;
+}
+
+.validation-message {
+    font-size: .75rem;
+    position: relative;
+    top: .2rem;
+    color: red;
+}
+
+.modal-body {
+    color: black;
+    font-size: .9rem;
+}
+
+.modal-header {
+    color: #4e73df;
+    height: 3.5rem;
+}
+
+.modal-content {
+    top: 1.5rem !important;
+    margin-bottom: 5.5rem !important;
+}
+
+.close {
+    float: right;
+}
+
+    .close > :first-child {
+        margin-right: .5rem;
+    }
+
+.noti-icon {
+    margin-right: .7rem;
+}
+
+.input-success-outline {
+    border: 2px solid #4CAF50;
+}
+
+.input-danger-outline {
+    border: 2px solid red;
+}
+
+.preload-trans {
+    transition: none !important;
+    -webkit-transition: none !important;
+}
+
+.action-col {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.table-title {
+    float: left;
+    margin:  0;
+}
+
+.table-title-hb {
+    float: left;
+    margin: .6rem 0;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-col {
+    flex-basis: 49%;
+}
+
+#add-new-button, #btn-add-images, #btn-add-images, #btn-cancel-images, #btn-save-images,
+#btn-edit-information, #btn-cancel-information, #btn-save-information, #btn-add-size, #btn-add-pn,
+#btn-add-ctpn, #btn-edit-pn, #btn-save-pn, #btn-cancel-pn, #btn-add-kh, #btn-confirm-dd, #btn-cancel-dd, #btn-redirect-dd, #btn-add-ctpn-old {
+    float: right;
+    margin-left: .7rem;
+}
+
+.edit-button, .delete-button, .detail-button {
+    margin: .3rem;
+}
+
+.disabled-background {
+    background-color: white !important;
+}
+
+.home-menu{
+    padding: 0 !important;
+}
+
+#active-control {
+    margin-left: .5rem;
+    /* margin-top: auto; */
+    vertical-align: middle;
+}

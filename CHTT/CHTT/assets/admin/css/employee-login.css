@@ -1,0 +1,47 @@
+﻿#user-valid {
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+    height: 2rem;
+    line-height: 0.9rem;
+}
+
+.labels-login {
+    font-size: .8rem;
+    color: black;
+    margin-left: 1rem;
+}
+
+.bg-img-login {
+    background: url(/assets/admin/img/login.jpg);
+    width: auto;
+    height: auto;
+    background-size: cover;
+}
+
+.bg-gradient-primary-2 {
+    /*
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    animation: slides ease-in-out 15s infinite;*/
+    background-color: #63a4ff;
+    background-image: linear-gradient(192deg, #63a4ff 0%, #83eaf1 74%);
+}
+
+/*@keyframes slides {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 50% 100%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}*/
+
+.validation-summary-errors ul li{
+    list-style: none;
+}

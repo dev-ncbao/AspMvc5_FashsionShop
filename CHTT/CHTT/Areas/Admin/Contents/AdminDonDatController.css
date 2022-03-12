@@ -1,0 +1,23 @@
+﻿#information-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.flex-col-left, .flex-col-right{
+    flex-basis: 40%;
+}
+
+#gc-control {
+    min-height: 7.4rem;
+}
+
+.picture-represent-column {
+    width: 4rem;
+    margin: auto !important;
+    display: block;
+}
+
+#btn-confirm-dd, #btn-cancel-dd, #btn-redirect-dd{
+    display:none;
+}

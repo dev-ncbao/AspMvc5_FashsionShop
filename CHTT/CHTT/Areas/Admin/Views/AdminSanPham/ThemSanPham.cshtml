@@ -1,0 +1,378 @@
+﻿@*@model CHTT.Areas.Admin.Models.HinhAnhModel*@
+@{
+    ViewBag.Title = "THÊM SẢN PHẨM";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #sp-content {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #danh-sach-hinh-anh {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 0;
+        flex-shrink: 0;
+        justify-content: space-evenly;
+    }
+
+        #danh-sach-hinh-anh > img {
+            width: 39%;
+            height: 28%;
+            margin: 1.5rem 0;
+            box-shadow: 1px 1px 5px #4e73df;
+        }
+
+    .so-luong-mac-dinh {
+        margin: 0 !important;
+    }
+
+    .so-luong {
+        margin: 1rem 2.3rem !important;
+        color: black;
+        border-bottom: 1px solid #4e73df;
+    }
+
+    #chi-tiet-container {
+        flex: 0 0 50%;
+        height: fit-content;
+    }
+
+    #pl-ha-container {
+        flex: 0 0 45%;
+        overflow-y: visible;
+    }
+
+    #form-thong-tin {
+        margin: .5rem 1.3rem;
+    }
+
+    .span-title {
+        width: 60%;
+        float: left;
+        margin-top: .5rem !important;
+    }
+
+    .btn-title {
+        float: right;
+    }
+
+    #hinh-anh-container{
+        height: fit-content;
+    }
+
+    .phan-loai-record-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .col-element-1{
+        flex: 0 0 24.5%;
+    }
+
+    .col-element-2 {
+        flex: 0 0 24.5%;
+    }
+
+    .col-element-3 {
+        flex: 0 0 46%;
+    }
+
+    #form-phan-loai{
+        display:flex;
+        flex-direction:column;
+    }
+
+    #phan-loai-record {
+        margin: .5rem 1.3rem;
+    }
+
+    .luu-y {
+        color: red;
+        padding: .3rem !important;
+        font-size: .8rem;
+        display: block;
+        border: 1px solid red;
+        @*margin-left: 1.5rem;
+        margin-right: 1.5rem;*@
+    }
+</style>
+
+<p class="alert luu-y card-header py-3">Lưu ý: Để lưu tất cả thông tin bạn vui lòng ấn nút LƯU SẢN PHẨM ở danh mục THÔNG TIN SẢN PHẨM</p>
+
+<div id="sp-content">
+    <div id="chi-tiet-container" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <span class="m-0 text-primary font-weight-bold span-title">Thông tin sản phẩm</span>
+            <div class="btn btn-primary btn-md btn-title" onclick="submitForms('@ViewBag.MaSP')">
+                <span>
+                    Lưu sản phẩm
+                </span>
+            </div>
+        </div>
+        <div id="chi-tiet">
+            <div id="form-thong-tin">
+                <form action="" method="post" id="form-chi-tiet">
+                    <input type="hidden" name="MaSP" value="@ViewBag.MaSP" />
+                    <div class="form-group">
+                        <label>Tên sản phẩm</label>
+                        <br />
+                        <input type="text" name="TenSP" value="" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dành cho đối tượng</label>
+                        <br />
+                        @{
+                            List<string> listDoiTuong = new List<string>();
+                            listDoiTuong.Add("Nam");
+                            listDoiTuong.Add("Nữ");
+                        }
+
+                        @Html.DropDownList("GioiTinh", new SelectList(listDoiTuong), "Chọn đối tượng phù hợp", new { @class = "form-control" })
+                        @*                            <select class="form-control" disabled style="background-color: white">
+                                <option value="Nam" selected>Nam</option>
+                                <option value="Nữ" selected>Nữ</option>
+                                <option value="Unisex" selected>Unisex</option>
+                            </select>
+                            <input type="text" name="GioiTinh" value="" class="form-control" />*@
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nhà cung cấp</label>
+                        <br />
+                        @{
+                            var listNhaCungCap = new List<string>();
+                            listNhaCungCap.Add("NCC01");
+                            listNhaCungCap.Add("NCC02");
+                            listNhaCungCap.Add("4Men");
+                        }
+                        @Html.DropDownList("MaNCC", new SelectList(listNhaCungCap,"4Men"), "Chọn nhà cung cấp", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Loại sản phẩm</label>
+                        <br />
+                        @{
+                            var listLoaiSanPham = new List<string>();
+                            listLoaiSanPham.Add("Áo");
+                            listLoaiSanPham.Add("Quần");
+                            listLoaiSanPham.Add("Balo");
+                            listLoaiSanPham.Add("Túi xách");
+                            listLoaiSanPham.Add("Nón");
+                        }
+                        @Html.DropDownList("LoaiSP", new SelectList(listLoaiSanPham), "Chọn nhà cung cấp", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chi tiết loại</label>
+                        <br />
+                        @{
+                            var listChiTietLoaiSP = new List<string>();
+                            listChiTietLoaiSP.Add("Áo thun");
+                            listChiTietLoaiSP.Add("Áo thun có bâu");
+                            listChiTietLoaiSP.Add("Áo sơ mi");
+                            listChiTietLoaiSP.Add("Áo crop-top");
+                            listChiTietLoaiSP.Add("Áo dài");
+                            listChiTietLoaiSP.Add("Áo tay lỡ");
+                        }
+                        @Html.DropDownList("ChungLoai", new SelectList(listChiTietLoaiSP), "Chọn nhà cung cấp", new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <br />
+                        <textarea type="text" name="MoTa" value="" class="form-control"></textarea>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="pl-ha-container">
+        <div id="phan-loai-container" class="card shadow mb-4">
+            <div class="card-header py-3">
+                <span class="m-0 text-primary font-weight-bold span-title ">Phân loại theo kích thước</span>
+                <div class="btn btn-outline-primary btn-md btn-title " onclick="themDongPhanLoai('@ViewBag.MaSP')">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16" style="margin-top: -.2rem">
+                            <path d="M.5 3l.04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z" />
+                            <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z" />
+                        </svg>
+                        Thêm kích thước
+                    </span>
+                </div>
+            </div>
+            <div id="phan-loai">
+                <form action="" method="post" id="form-phan-loai">
+                    <div id="phan-loai-record">
+                        <div class="phan-loai-record-container">
+                            <input type="hidden" name="[0].MaSP" value="@ViewBag.MaSP" />
+                            <div class="form-group col-element-1">
+                                <label>Size</label>
+                                <br />
+                                <input type="text" name="[0].Size" value="" class="form-control" />
+                            </div>
+
+                            <div class="form-group col-element-2">
+                                <label>Số lượng</label>
+                                <br />
+                                <input type="text" name="[0].SoLuong" value="" class="form-control" />
+                            </div>
+
+                            <div class="form-group col-element-3">
+                                <label>Giá</label>
+                                <br />
+                                <input type="text" name="[0].Gia" value="" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="hinh-anh-container" class="card shadow mb-4">
+            <div class="card-header py-3">
+                <span class="m-0 text-primary font-weight-bold span-title">Hình ảnh</span>
+                <label class="btn btn-outline-primary btn-md btn-title" for="files" style="margin-bottom:0">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16" style="margin-top: -.2rem">
+                            <path d="M.5 3l.04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z" />
+                            <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z" />
+                        </svg>
+                        Thêm hình ảnh
+                    </span>
+                </label>
+                <form action="@Url.Action("ThemHinhAnh","AdminSanPham")" method="post" id="form-hinh-anh" enctype="multipart/form-data">
+                    <input type="hidden" name="MaSP" value="@ViewBag.MaSP" />
+                    <input type="file" name="files" multiple id="files" accept=".png,.jpg,.jpeg" style="display: none" onchange="loadFiles(event)" />
+                </form>
+                @*@using (Html.BeginForm("ThemHinhAnh", "AdminSanPham", FormMethod.Post, new { @id = "form-hinh-anh", enctype = "multipart/form-data" })) { 
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="MaSP" value="@ViewBag.MaSP" />
+                    @Html.TextBoxFor(x=>x.files,"", new { @type = "file", @multiple="multiple", @id = "files" ,@accept = ".png,.jpg,.jpeg" ,@style = "display: none" ,@onchange = "loadFiles(event)" })
+                }*@
+            </div>
+    
+                <div id="hinh-anh">
+    
+                    <p id="so-luong-hinh-anh" class="so-luong-mac-dinh"></p>
+                <div id="danh-sach-hinh-anh"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script>
+        $(document).ready(function () {
+            ctUrl = '@Html.Raw(Url.Action("ChiTiet","AdminSanPham"))';
+            haUrl = '@Html.Raw(Url.Action("HinhAnh","AdminSanPham"))';
+            plUrl = '@Html.Raw(Url.Action("PhanLoai","AdminSanPham"))';
+            ctUrl += '?id=@Model';
+            haUrl += '?id=@Model';
+            plUrl += '?id=@Model';
+            $('#chi-tiet').load(ctUrl);
+            $('#hinh-anh').load(haUrl);
+            $('#phan-loai').load(plUrl);
+        });
+    </script>*@
+
+<script>
+    var formData;
+    function themDongPhanLoai(MaSP) {
+        var count = $('.phan-loai-record-container').length;
+        $("#phan-loai-record").append(
+            '<div class="phan-loai-record-container"><input type="hidden" name="[' + count + '].MaSP" value="' + MaSP + '" /><div class= "form-group col-element-1" ><label>Size</label><br /><input type="text" name="[' + count + '].Size" value="" class="form-control" /></div><div class="form-group col-element-2"><label>Số lượng</label><br /><input type="text" name="[' + count + '].SoLuong" value="" class="form-control" /></div><div class="form-group col-element-3"><label>Giá</label><br /><input type="text" name="[' + count + '].Gia" value="" class="form-control" /></div></div >'
+        );
+    }
+
+    function loadFiles(event) {
+        $('#form-hinh-anh input[type="hidden"]').addClass('alert-success');
+        formData = new FormData();
+        var listFile = event.target.files;
+        $('#so-luong-hinh-anh').empty();
+        $('#danh-sach-hinh-anh').empty();
+        $('#so-luong-hinh-anh').append(listFile.length + ' ảnh đã được chọn.').removeClass('so-luong-mac-dinh').addClass('so-luong');
+        for (var i = 0; i < listFile.length; i++) {
+            $('#danh-sach-hinh-anh').append('<img src="' + URL.createObjectURL(listFile[i]) + '"/>');
+            formData.append("files", listFile[i]);
+        }
+    }
+
+    @*if ($('#form-phan-loai input[type="text"]').val().length !) {
+        $('#form-phan-loai input[type="text"]').addClass('alert-success');
+    }
+    else {
+        //$('#form-phan-loai input[type="text"]').removeClass('alert-success');
+    }*@
+
+    function submitForms() {
+        //add valid here
+        submitFormChiTiet();
+    }
+
+    function submitFormChiTiet() {
+        var urlChiTiet = "ThemChiTiet";
+        $.ajax({
+            type: "POST",
+            url: urlChiTiet,
+            data: $('#form-chi-tiet').serialize(),
+            success: function () {
+                submitFormPhanLoai();
+                @*if ($('#form-phan-loai input[type="hidden"]').hasClass('alert-success')) {
+                    submitFormPhanLoai();
+                }
+                else {
+                    if ($('#form-hinh-anh input[type="hidden"]').hasClass('alert-success')) {
+                        submitFormHinhAnh();
+                    }   
+                }*@
+            },
+            error: function () {
+                alert("fail chi tiet");
+            }
+        });
+    }
+
+    function submitFormPhanLoai() {
+        var urlPhanLoai = "ThemPhanLoai";
+        $.ajax({
+            type: "POST",
+            url: urlPhanLoai,
+            data: $('#form-phan-loai').serialize(),
+            success: function () {
+                if ($('#form-hinh-anh input[type="hidden"]').hasClass('alert-success')) {
+                    submitFormHinhAnh();
+                }  
+                alert("done");
+            },
+            error: function () {
+                alert("fail phan loai");
+            }
+        });
+    }
+
+    function submitFormHinhAnh() {
+        var urlHinhAnh = "ThemHinhAnh";
+        formData.append("MaSP", $('#form-hinh-anh input[type="hidden"]').val());
+        $.ajax({
+            type: "POST",
+            url: urlHinhAnh,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function () {
+                alert("ok");
+            },
+            error: function () {
+                alert("fail hinh anh");
+            }
+        });
+    }
+</script>
+

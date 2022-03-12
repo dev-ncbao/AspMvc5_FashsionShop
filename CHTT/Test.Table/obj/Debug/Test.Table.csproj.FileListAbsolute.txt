@@ -1,0 +1,14 @@
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\Test.Table.dll.config
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\Test.Table.dll
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\Test.Table.pdb
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\EntityFramework.dll
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\EntityFramework.xml
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.csproj.CoreCompileInputs.cache
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.csproj.CopyComplete
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.dll
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.pdb
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.Migrations.CreateDB.resources
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.csproj.GenerateResource.cache
+D:\Documents for IT\Niên luận cơ sở\CHTT\Test.Table\obj\Debug\Test.Table.csprojAssemblyReference.cache

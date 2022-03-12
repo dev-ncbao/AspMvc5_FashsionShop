@@ -1,0 +1,93 @@
+﻿@model CHTT.Areas.Admin.Models.HoaDonChiTietModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="~/Areas/Admin/Contents/AdminHoaDonController.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title">Chi tiết hóa đơn</h6>
+    </div>
+    <div class="card-body">
+        <div id="information-container">
+            <div class="flex-col-left">
+                <div class="form-group">
+                    <label class="label-control">Mã khách hàng:</label>
+                    @Html.TextBoxFor(x => x.MaKH, new { @class = "form-control", @id = "mkh-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Họ tên:</label>
+                    @Html.TextBoxFor(x => x.HoTenKH, new { @class = "form-control", @id = "hoten-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Giới tính:</label>
+                    @Html.TextBoxFor(x => x.Phai, new { @class = "form-control", @id = "gt-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Số điện thoại:</label>
+                    @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control", @id = "sdt-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Email:</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "email-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Địa chỉ:</label>
+                    @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control", @id = "diachi-control" })
+                </div>
+            </div>
+            <div class="flex-col-right">
+                <div class="form-group">
+                    <label class="label-control">Mã hóa đơn:</label>
+                    @Html.TextBoxFor(x => x.MaHD, new { @class = "form-control", @id = "mhd-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Mã nhân viên xuất HĐ:</label>
+                    @Html.TextBoxFor(x => x.MaNV, new { @class = "form-control", @id = "mkh-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Mã đơn đặt:</label>
+                    @Html.TextBoxFor(x => x.MaDD, new { @class = "form-control", @id = "mdd-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Ngày giờ xuất hóa đơn:</label>
+                    @Html.TextBoxFor(x => x.NgayXuatHD, new { @class = "form-control", @id = "ngayxuathd-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Tổng giá trị đơn hàng:</label>
+                    @Html.TextBoxFor(x => x.TongGiaTri, new { @class = "form-control", @id = "tg-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Ghi chú:</label>
+                    @Html.TextAreaFor(x => x.GhiChu, new { @class = "form-control", @id = "gc-control", @placeholder = "Không có ghi chú" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="CTHDTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td>Mã SP</td>
+                                <td>Ảnh đại diện</td>
+                                <td>Tên gọi</td>
+                                <td>Số lượng</td>
+                                <td>Size</td>
+                                <td>Giá bán</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminHoaDonDetailController.js"></script>

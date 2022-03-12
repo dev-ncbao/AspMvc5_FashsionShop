@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "CHI TIẾT SẢN PHẨM";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<style>
+    #sp-content {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #hinh-anh{
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 0;
+        flex-shrink: 0;
+        justify-content: space-evenly;
+    }
+
+    img{
+        width: 39%;
+        height: 28%;
+        margin: 1.5rem 0;
+        box-shadow: 1px 1px 5px #4e73df;
+    }
+
+    #sp-pl-container{
+        flex: 0 0 50%;
+    }
+
+    #hinh-anh-container {
+        flex: 0 0 45%;
+        overflow-y: visible;
+    }
+
+    #form-thong-tin{
+        margin: .5rem 1.3rem;
+    }
+
+    .span-title {
+        width: 92%;
+        float: left;
+        margin-top: .5rem !important;
+    }
+
+    .btn-title{
+        float:right;
+    }
+</style>
+
+<div id="sp-content">
+    <div id="sp-pl-container">
+        <div id="chi-tiet-container" class="card shadow mb-4">
+            <div class="card-header py-3">
+                <span class="m-0 text-primary font-weight-bold span-title">Thông tin sản phẩm</span>
+                @*<div class="btn btn-outline-warning btn-md btn-title">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="margin-top: -.2rem">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                        Chỉnh sửa
+                    </span>
+                </div>*@
+            </div>
+            <div id="chi-tiet">
+
+            </div>
+        </div>
+        <div id="phan-loai-container" class="card shadow mb-4">
+            <div class="card-header py-3">
+                <span class="m-0 text-primary font-weight-bold span-title ">Phân loại theo kích thước</span>
+                <div class="btn btn-outline-primary btn-md btn-title ">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16" style="margin-top: -.2rem">
+                            <path d="M.5 3l.04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z" />
+                            <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z" />
+                        </svg>
+                        Thêm kích thước
+                    </span>
+                </div>
+            </div>
+            <div id="phan-loai">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="hinh-anh-container" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <span class="m-0 text-primary font-weight-bold span-title">Hình ảnh</span>
+            <div class="btn btn-outline-primary btn-md btn-title">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16" style="margin-top: -.2rem">
+                        <path d="M.5 3l.04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z" />
+                        <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                    Thêm hình ảnh
+                </span>
+            </div>
+        </div>
+        <div id="hinh-anh">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        ctUrl = '@Html.Raw(Url.Action("ChiTiet","AdminSanPham"))';
+        haUrl = '@Html.Raw(Url.Action("HinhAnh","AdminSanPham"))';
+        plUrl = '@Html.Raw(Url.Action("PhanLoai","AdminSanPham"))';
+        ctUrl += '?id=@Model';
+        haUrl += '?id=@Model';
+        plUrl += '?id=@Model';
+        $('#chi-tiet').load(ctUrl);
+        $('#hinh-anh').load(haUrl);
+        $('#phan-loai').load(plUrl);
+    });
+</script>
+

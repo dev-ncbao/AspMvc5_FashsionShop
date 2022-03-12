@@ -1,0 +1,27 @@
+﻿<style>
+    #add-alert-danger {
+        width: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+        top: 1.5rem;
+        right: 2rem;
+        display: block;
+        z-index: 2000;
+    }
+
+        #add-alert-danger span {
+            margin-left: .8rem;
+        }
+</style>
+
+<div id="add-alert-danger" class="alert alert-danger">
+    <i class="fa fa-times-circle"></i>
+    <span>@Model</span>
+</div>
+
+<script>
+    $("#add-alert-danger").delay(2000).fadeOut(500);
+</script>

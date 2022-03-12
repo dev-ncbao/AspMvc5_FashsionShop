@@ -1,0 +1,102 @@
+﻿@model Model.Library.NhanVien
+
+
+@{
+    Layout = null;
+}
+
+<div id="aoe-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "form-nv" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false)
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MaNV, "Mã số:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.MaNV, new { @class = "form-control", @id = "mnv-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.HoTen, "Họ tên:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.HoTen, new { @class = "form-control", @id = "hoten-control" })
+                        <span class="validation-message">Vui lòng không để trống - tối đa 100 ký tự.</span>
+                    </div>
+                    <div id="gt-ns-container">
+                        <div class="form-group" id="gt-container">
+                            @Html.LabelFor(x => x.Phai, "Giới tính:", new { @class = "label-control" })
+                            <div class="form-check gt-control">
+                                @Html.RadioButtonFor(x => x.Phai, "Nam", new { @class = "form-check-input", @id = "PhaiNam" })
+                                <label for="PhaiNam" class="form-check-label">Nam</label>
+                            </div>
+                            <div class="form-check gt-control">
+                                @Html.RadioButtonFor(x => x.Phai, "Nữ", new { @class = "form-check-input", @id = "PhaiNu" })
+                                <label for="PhaiNu" class="form-check-label">Nữ</label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ns-container">
+                            @Html.LabelFor(x => x.NgaySinh, "Ngày sinh:", new { @class = "label-control" })
+                            @Html.TextBoxFor(x => x.NgaySinh, new { @class = "form-control", @type = "date", @id = "ngaysinh-control" })
+                            <span class="validation-message">Vui lòng chọn ngày.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Luong, "Lương:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.Luong, new { @class = "form-control", @id = "luong-control" })
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SoDienThoai, "Số điện thoại", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control", @id = "sdt-control" })
+                        <span class="validation-message">Vui lòng không để trống - chỉ chấp nhận SĐT có 10 chữ số.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Email, "Email:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "email-control" })
+                        <span class="validation-message">Có thể để trống thông tin này.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MaChucVu, "Chức vụ:", new { @class = "label-control" })
+                        @Html.DropDownListFor(x => x.MaChucVu, new SelectList(ViewBag.ChucVu, "MaChucVu", "TenChucVu", null), "Vui lòng chọn chức vụ", new { @class = "form-control", @id = "chucvu-control" })
+                        <span class="validation-message">Vui lòng chọn chức vụ.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.QueQuan, "Quê quán:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.QueQuan, new { @class = "form-control", @id = "quequan-control" })
+                        <span class="validation-message">Vui lòng không để trống - tối đa 300 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.DiaChi, "Nơi ở hiện nay:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control", @id = "diachi-control" })
+                        <span class="validation-message">Vui lòng không để trống - tối đa 300 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MatKhau, "Mật khẩu", new { @class = "label-control" })
+                        @Html.PasswordFor(x => x.MatKhau, new { @class = "form-control", @id = "mk-control" })
+                        <span class="validation-message">Vui lòng không để trống - 6-15 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Xác nhận lại mật khẩu:</label>
+                        <input type="password" id="mkagain-control" class="form-control" />
+                        <span class="validation-message">Vui lòng không để trống - 6-15 ký tự.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.KichHoat, "Kích hoạt:", new
+                        {@*@class = "label-control"*@})
+                        <input type="checkbox" name="name" value="" id="active-control" />
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-button">Lưu</button>
+                <button class="btn btn-dark" id="reset-button">Làm mới</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

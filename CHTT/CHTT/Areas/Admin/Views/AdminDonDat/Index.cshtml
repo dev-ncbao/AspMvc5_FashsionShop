@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="~/Areas/Admin/Contents/AdminDonDatController.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title">Danh sách đơn đặt hàng</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="DDTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>Mã số</td>
+                        <td>Họ tên khách hàng</td>
+                        <td>Ngày đặt</td>
+                        <td>Tổng số lượng hàng</td>
+                        <td>Trạng thái</td>
+                        <td>Hành động</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminDonDatController.js"></script>

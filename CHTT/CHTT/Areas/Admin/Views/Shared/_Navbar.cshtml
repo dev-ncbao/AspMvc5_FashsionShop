@@ -1,0 +1,95 @@
+﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Home/Index" title="Chuyển về trang cửa hàng">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Modern Shop</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Index","AdminHome",null)">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <span>Trang chủ</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Danh mục quản lý
+    </div>
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="/quan-ly/san-pham">
+            <i class="fa fa-gift" aria-hidden="true"></i>
+            <span>Sản phẩm</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item ">
+        <a class="nav-link" href="/quan-ly/khach-hang">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>Khách Hàng</span>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="/quan-ly/don-dat">
+            <i class="fas fa-cart-plus"></i>
+            <span>Đơn đặt</span>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="/quan-ly/hoa-don">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Hóa đơn</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item ">
+        <a class="nav-link" href="@Url.Action("Index","AdminPhieuNhap",null)">
+            <i class="far fa-file-alt"></i>
+            <span>Phiếu nhập hàng</span>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="/quan-ly/ncc">
+            <i class="far fa-handshake"></i>
+            <span>Nhà cung cấp</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item ">
+        <a class="nav-link" href="/quan-ly/nhan-vien">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Nhân viên</span>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="@Url.Action("Index","AdminThongKe",null)">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Thống kê</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+</ul>
+
+<div id="backdrop"></div>

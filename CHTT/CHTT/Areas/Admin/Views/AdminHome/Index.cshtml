@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "TRANG CHỦ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/AdminHomeController.css" rel="stylesheet" />
+<!-- Page Content -->
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fas fa-tshirt fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right" style="font-weight: bold">
+                        <div class="huge" id="sp-name"></div>
+                        <div>Sản phẩm</div>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-link home-menu" href="@Url.Action("Index","AdminSanPham")">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem chi tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fas fa-user-check fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right" style="font-weight: bold">
+                        <div class="huge" id="kh-name"></div>
+                        <div>Khách hàng</div>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-link home-menu" href="@Url.Action("Index","AdminKhachHang")">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem chi tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right" style="font-weight: bold">
+                        <div class="huge" id="ddm-name"></div>
+                        <div>Đơn đặt mới</div>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-link home-menu" href="@Url.Action("Index","AdminDonDat")">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem chi tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fas fa-scroll fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right" style="font-weight: bold">
+                        <div class="huge" id="pnh-name"></div>
+                        <div>Phiếu nhập hàng</div>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-link home-menu" href="@Url.Action("Index","AdminPhieuNhap")">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem chi tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title">Thông báo</h6>
+    </div>
+    <div class="card-body" >
+        <div id="tb-container">
+            <p>Hiện tại không có thông báo nào</p>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title">Chương trình khuyến mãi</h6>
+    </div>
+    <div class="card-body" >
+        <div id="km-container">
+            <p>Hiện tại không có chương trình khuyến mãi nào</p>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminHomeController.js"></script>

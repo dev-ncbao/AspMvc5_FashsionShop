@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/AdminThongKeController.css" rel="stylesheet" />
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title user-infor">Thống kê - báo cáo tình hình kinh doanh</h6>
+    </div>
+    <div class="card-body">
+        <div id="control-wrapper">
+            <div class="form-group">
+                <div id="control-container">
+                    <label class="col-form-label">
+                        Chọn ngày:
+                    </label>
+                    <input type="date" id="ip-day-control" class="form-control" />
+                    <label class="col-form-label">
+                        Thống kê theo:
+                    </label>
+                    <select id="ddl-day-control" class="form-control">
+                        <option value="day">Ngày</option>
+                        <option value="month">Tháng</option>
+                        <option value="year">Năm</option>
+                    </select>
+                    <button id="btn-liet-ke" class="btn btn-primary">Liệt kê</button>
+                </div>
+            </div>
+        </div>
+        <div id="report-wrapper">
+            <div id="report-container">
+                <p id="total-bill-count">Tổng số hóa đơn: Chưa có dữ liệu</p>
+                <p id="total-sales">Tổng doanh thu: Chưa có dữ liệu</p>
+                <div id="report-list-product">
+                    <table class="table table-borderless table-striped">
+                        <thead>
+                            <td>STT</td>
+                            <td>Mã sản phẩm</td>
+                            <td>Tên sản phẩm</td>
+                            <td>Số lượng</td>
+                            <td>Size</td>
+                            <td>Giá</td>
+                        </thead>
+                            <tbody>
+                                
+                            </tbody>
+                    </table>
+                    <p>Chưa có dữ liệu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/Admin/Scripts/controllers/AdminThongKeController.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>

@@ -1,0 +1,46 @@
+﻿@model CHTT.Models.UserLoginModel
+@{
+    Layout = null;
+}
+
+<div id="login-modal-container">
+    @using (Html.BeginForm("", "",FormMethod.Post, new { @id = "login-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-title">
+            <p class="login-title">
+                đăng nhập
+            </p>
+        </div>
+        <div class="form-content">
+            <div class="form-group">
+                @Html.LabelFor(x => x.TaiKhoan, "Tài khoản: ", new { @class = "frm-label" })
+                @Html.TextBoxFor(x => x.TaiKhoan, new { @id = "tk-control", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.MatKhau, "Mật khẩu: ", new { @class = "frm-label" })
+                @Html.PasswordFor(x => x.MatKhau, new { @id = "mk-control", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="cbx-remember" name="cbx-remember" />
+                <label class="frm-label cbx-label" for="cbx-remember">Ghi nhớ tài khoản</label>
+            </div>
+            <div class="form-group">
+                <div class="frm-login-button">
+                    <div class="form-control" id="btn-login">Đăng nhập</div>
+                    <div class="form-control" id="btn-close-login">Đóng</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-login-option">
+                    <p id="btn-forgot-pass" class="bottom-animation">Lấy lại mật khẩu</p>
+                    <p id="btn-register-account" class="bottom-animation">Đăng ký tài khoản</p>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+

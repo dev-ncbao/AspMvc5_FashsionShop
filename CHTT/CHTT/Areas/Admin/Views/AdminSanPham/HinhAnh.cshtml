@@ -1,0 +1,22 @@
+﻿@model List<Model.SPHinhAnh>
+<style>
+    #them-hinh-anh{
+        width: 100%;
+    }
+</style>
+<div id="them-hinh-anh">
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-group">
+            <label>Upload hình:</label>
+            <label for="upload-hinh-anh">Chọn hình</label>
+            <input type="file" multiple name="Link" id="upload-hinh-anh"/>
+        </div>
+    }
+</div>
+
+@foreach (var ha in Model)
+{
+    <img src="@ha.Link" alt="Alternate Text" />
+}

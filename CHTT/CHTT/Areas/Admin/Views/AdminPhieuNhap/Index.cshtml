@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/AdminPhieuNhapController.css" rel="stylesheet" />
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title">Danh sách phiếu nhập</h6>
+        <button class="btn btn-outline-primary btn-md" id="btn-add-pn">
+            <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Thêm
+            </span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="PNTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>Mã số</td>
+                        <td>Nhà cung cấp</td>
+                        <td>Ngày nhập</td>
+                        <td>SL tổng hợp</td>
+                        <td>SL chi tiết</td>
+                        <td>Tổng giá</td>
+                        <td>Hành động</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="aoe-container">
+    @Html.Partial("AOEModal")
+</div>
+<script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminPhieuNhapController.js"></script>
+

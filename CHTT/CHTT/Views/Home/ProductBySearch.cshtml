@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "LoadListProductBySearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="product-bc-container">
+    <div id="product-category">
+        <div class="product-category-flex product-by-category">
+            <p class="category-title">
+                Kết quả tìm kiếm cho: @ViewBag.SearchString
+            </p>
+            <div class="product-category-container have-no-product" id="list-product">
+                <p>Hiện không có sản phẩm nào</p>
+            </div>
+            <div class="product-category-footer">
+                <p id="list-product-append">Xem thêm <i class="fas fa-caret-down navbar-dropdown-icon"></i></p>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+<div id="txt-SearchString" data-string="@ViewBag.SearchString"></div>
+<script src="~/Scripts/controller/ProductBySearch.js"></script>

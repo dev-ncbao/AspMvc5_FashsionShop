@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/AdminSanPhamController.css" rel="stylesheet" />
+<link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+<div id="top-page-alert" class="alert alert-warning">
+    <span>Bạn có thể thêm mới sản phẩm khác bằng cách reload lại trang. Đừng quên <b>Lưu</b> sản phẩm hiện tại nhé</span>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title-custom">Thông tin chi tiết</h6>
+        <button class="btn btn-primary btn-md" id="btn-save-information" >
+            <span>
+                Lưu
+            </span>
+        </button>
+        <button class="btn btn-dark btn-md" id="btn-cancel-information" >
+            <span>
+                Hủy bỏ
+            </span>
+        </button>
+        <button class="btn btn-outline-primary btn-md" id="btn-edit-information" >
+            <span>
+                <i class="far fa-edit"></i>
+                Chỉnh sửa
+            </span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div id="MSSP" data-id="@ViewBag.MSSP" style="display:none"></div>
+        <div id="information-container"></div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title-custom">Phân loại và giá bán</h6>
+        <button class="btn btn-outline-primary btn-md" id="btn-add-size" >
+            <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Thêm
+            </span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div id="size-container" class="table-responsive">
+            <table id="size-table" class="table table-bordered table-striped" width="100%">
+                <thead>
+                    <tr>
+                        <td>Size</td>
+                        <td>Giá bán</td>
+                        <td>Số lượng</td>
+                        <td>Hành động</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="aoe-size-modal">
+
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title-custom">Hình ảnh sản phẩm</h6>
+        <button class="btn btn-primary btn-md" id="btn-save-images" >
+            <span>
+                Lưu
+            </span>
+        </button>
+        <button class="btn btn-dark btn-md" id="btn-cancel-images" >
+            <span>
+                Hủy bỏ
+            </span>
+        </button>
+        <label for="file" class="btn btn-outline-primary btn-md" id="btn-add-images" >
+            <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Thêm
+            </span>
+        </label>
+        <form id="add-new-image-form" enctype="multipart/form-data">
+            <input type="file" id="file" name="file" accept=".png,.jpg,.jpge" multiple />
+        </form>
+    </div>
+    <div class="card-body">
+        <div id="image-container">
+            <span class="image-length"></span>
+            <div id="image-list"></div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script>
+    var AOEProductState = @Html.Raw(Json.Encode(ViewBag.addState));
+</script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminSanPhamAddOrEdit.js"></script>

@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div id="add-old-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 @*class="modal-title"*@>THÊM CHI TIẾT PHIẾU</h4>
+                <button type="button" class="close" id="close-old-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label class="label-control">Chọn sản phẩm</label>
+                        <select id="old-product" class="form-control">
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Số lượng:</label>
+                        <input type="text" class="form-control" id="sl-old-control"/>
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Giá nhập:</label>
+                        <input type="text" class="form-control" id="gn-old-control" />
+                        <span class="validation-message">Vui lòng không để trống - chỉ nhập số.</span>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-old-button">Lưu</button>
+                <button class="btn btn-dark" id="reset-old-button">Làm mới</button>
+            </div>
+        </div>
+
+    </div>
+</div>

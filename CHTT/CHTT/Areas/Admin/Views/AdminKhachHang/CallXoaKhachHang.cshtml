@@ -1,0 +1,58 @@
+﻿<style>
+div#deleteModal .modal-content {
+        top: 1.5rem !important;
+        margin-bottom: 5.5rem !important;
+        width: 40% !important;
+        left: 30% !important;
+    }
+
+    #deleteModal {
+        overflow: auto !important;
+    }
+
+    .close-icon {
+        float: right;
+    }
+
+        .close-icon > :first-child {
+            margin-right: .5rem;
+        }
+
+    .modal-body {
+        color: black;
+        font-size: .9rem;
+    }
+
+    .modal-header {
+        color: #4e73df;
+        height: 3.5rem;
+    }
+
+    .modal-title {
+        width: 80% !important;
+    }
+</style>
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">XÁC NHẬN</h4>
+            <button class="close" style="cursor: pointer" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <span>Bạn muốn xóa khách hàng này?</span>
+            @using (@Html.BeginForm("XoaKhachHang", "AdminKhachHang", FormMethod.Post, new { @id = "delete-form" }))
+            {
+                <input type="hidden" name="id" value="@Model" />
+                <hr />
+                <div class="close-icon">
+                    <button data-dismiss="modal" class="btn btn-outline-secondary">Không</button>
+                    <button type="submit" class="btn btn-primary">Có</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#deleteModal').fadeIn(500).modal({ backdrop: "static" });
+</script>

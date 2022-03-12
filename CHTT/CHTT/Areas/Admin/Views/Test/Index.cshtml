@@ -1,0 +1,132 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+    <title>Index</title>
+    <style>
+        body {
+            margin: 6%;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .mar-bot {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <div class="col-md-2 mar-bot">
+                <!-- Trigger the modal with a button -->
+                <button type="button" id="btnAddEmployee" class="btn btn-success" data-toggle="modal" data-target="#modalAddUpdate">Add Employee</button>
+            </div>
+        </div>
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Salary</td>
+                        <td>Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody id="tblData">
+                </tbody>
+            </table>
+            <div id="pagination" class="pagination"></div>
+            <script id="data-template" type="x-tmpl-mustache">
+                <tr>
+                    <td>{{ID}}</td>
+                    <td>{{Name}}</td>
+                    <td><input type="number" class="salary-cells" data-id={{ID}} value="{{Salary}}" /></td>
+                    <td>{{{Status}}}</td>
+                    <td>
+                        <button class="btn btn-primary btnEditEmployee" data-id={{ID}}>Edit</button>
+                        <button class="btn btn-danger btnDeleteEmployee" data-id={{ID}}>Delete</button>
+                    </td>
+                </tr>
+            </script>
+        </div>
+
+        <!-- Modal -->
+        <div id="modalAddUpdate" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" id="txtID" value="-1" />
+                            <div class="form-group">
+                                <label for="txtName">Name</label>
+                                <input type="text" id="txtName" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSalary">Salary</label>
+                                <input type="text" id="txtSalary" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ckbStatus">Active: </label>
+                                <input type="checkbox" id="ckbStatus" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSave" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+@*Data-Table*@
+        <div>
+            <table id="example" class="display-1 nowrap table table-bordered">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Salary</td>
+                        <td>Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.3/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.3/mustache.js"></script>
+    <script src="~/Areas/Admin/Scripts/pluggins/jquery.twbsPagination.min.js"></script>
+    <script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    @*<script src="~/Areas/Admin/Scripts/pluggins/mustache.js"></script>*@
+    <script src="~/Areas/Admin/Scripts/controllers/testController.js"></script>
+</body>
+</html

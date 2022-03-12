@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "TestView";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<button id="test-btn" onclick="change()">click me!</button>
+
+<script>
+    function change() {
+        window.location.href = "Index";
+        alert(window.location.href);
+    }
+</script>
+

@@ -1,0 +1,347 @@
+﻿@model Model.KhachHang
+<style>
+
+
+    div#myModal .modal-content {
+        top: 1.5rem !important;
+        margin-bottom: 5.5rem !important;
+        width: 40% !important;
+        left: 30% !important;
+    }
+
+    #myModal {
+        overflow: auto !important;
+    }
+
+    .close-icon {
+        float: right;
+    }
+
+        .close-icon > :first-child {
+            margin-right: .5rem;
+        }
+
+    #flex-control {
+        display: flex;
+        flex-direction: column;
+    }
+
+        #flex-control span {
+            margin-left: .5rem;
+        }
+
+        #flex-control input[type="date"] {
+            width: 35%;
+            display: inline;
+            margin-left: .5rem;
+        }
+
+    .modal-body {
+        color: black;
+        font-size: .9rem;
+    }
+
+    .modal-header {
+        color: #4e73df;
+        height: 3.5rem;
+    }
+
+    #radio-control input {
+        margin-left: 1rem;
+    }
+
+    .modal-title {
+        width: 80% !important;
+    }
+
+    span#form-valid {
+        color: red;
+        padding: .3rem !important;
+        font-size: .8rem;
+        display: none;
+        border: 1px solid red;
+    }
+
+    span#form-warning {
+        color: red;
+        padding: .3rem !important;
+        font-size: .8rem;
+        display: block;
+        border: 1px solid red;
+    }
+
+    #them-alert-danger {
+        width: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+        top: 1.5rem;
+        right: 2rem;
+        display: none;
+        z-index: 1000;
+    }
+
+        #them-alert-danger span {
+            margin-left: .8rem;
+        }
+</style>
+
+@*Modal thêm khách hàng*@
+<div class="modal" id="myModal" role="dialog">
+    <div id="them-alert-danger" class="alert alert-danger">
+        <i class="fa fa-times-circle"></i>
+        <span>Vui lòng kiểm tra lại thông tin</span>
+    </div>
+    @*Modal content*@
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">THÊM KHÁCH HÀNG</h4>
+            <button class="close" style="cursor: pointer" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm("ThemKhachHang", "AdminKhachHang", FormMethod.Post, new { @id = "form" }))
+            {
+                //
+                <div class="form-group">
+                    <span id="form-warning" class="alert">Hệ thống sẽ loại bỏ khoảng trắng dư thừa ở đầu và cuối.</span>
+                </div>
+                //
+                <div class="form-group">
+                    <label>Họ tên: </label>
+                    @Html.TextBoxFor(x => x.HoTen, new { @id = "form-hoten", @class = "form-control", @placeholder = "Họ và tên có dấu và không chứa ký tự đặc biệt" })
+                </div>
+                //
+                <div class="form-group" id="flex-control">
+                    <div id="radio-control">
+                        <label>Giới tính: </label>
+                        @Html.RadioButtonFor(x => x.Phai, "Nam", new { @checked = true, @id = "form-phai-nam" })<span>Nam</span>
+                        @Html.RadioButtonFor(x => x.Phai, "Nữ", Model.Phai == "Nữ" ? new { @checked = true } : null)<span>Nữ</span>
+                    </div>
+                    <div>
+                        <label>Ngày sinh: </label>
+                        <input id="form-date" type="date" name="NgaySinh" class="form-control" value="@{
+                            if (Convert.ToDateTime(Model.NgaySinh).ToString("yyyy-MM-dd") != "0001-01-01")
+                            {
+                                @Convert.ToDateTime(Model.NgaySinh).ToString("yyyy-MM-dd")
+                            }
+                            else {
+                                @DateTime.Today.ToString("yyyy-MM-dd")
+                            }
+                        }" />
+                    </div>
+                </div>
+                //
+                <div class="form-group">
+                    <label>Địa chỉ:</label>
+                    @Html.TextAreaFor(x => x.DiaChi, new { @class = "form-control", @id = "form-diachi", @placeholder = "VD: Số nhà, tên đường, Phường/Xã, Huyện/Quận, Tỉnh/Thành phố" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Số điện thoại:</label>
+                    @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control", @id = "form-sdt", @placeholder = "Chỉ chứa số và KHÔNG có ký tự đặc biệt. VD: 012345678" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Email: (không bắt buộc)</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "form-email", @placeholder = "vidu@email.com hoặc để trống" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Tài khoản:</label>
+                    @Html.TextBoxFor(x => x.TaiKhoan, new { @class = "form-control", @id = "form-tk", @placeholder = "Không phân biệt HOA/ THƯỜNG và KHÔNG chứa ký tự đặc biệt" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Mật khẩu:</label>
+                    @Html.PasswordFor(x => x.MatKhau, new { @class = "form-control", @id = "form-mk1", @value = Model.MatKhau, @placeholder = "Tối thiểu 6 ký tự, tối đa 15 ký tự, PHÂN BIỆT hoa thường" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Nhập lại mật khẩu:</label>
+                    <input id="form-mk2" type="password" class="form-control" value="@Model.MatKhau" placeholder="Xác nhận lại mật khẩu vừa nhập" />
+                </div>
+                <div class="form-group">
+                    <span id="form-valid" class="alert">Vui lòng kiểm tra các ô chưa hợp lệ hoặc chưa điền thông tin.</span>
+                </div>
+                <hr />
+                <div class="close-icon">
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">Đóng</button>
+                    <button id="form-submit" type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+            $("#myModal").fadeIn(800).modal({ backdrop: "static" });
+    });
+
+    $('#form-hoten').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-diachi').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-sdt').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0 || $.isNumeric($(this).val()) == false) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-date').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-email').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-danger');
+            $(this).removeClass('alert-success');
+        }else if ($(this).val().indexOf('@Html.Raw("@")') == -1) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+            //console.log($(this).val());
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-tk').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-mk1').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length < 6 || $(this).val().trim().length > 15) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+        if ($('#form-mk2').val() != $('#form-mk1').val() || $(this).val().trim().length < 6 || $(this).val().trim().length > 15) {
+            $('#form-mk2').removeClass('alert-success');
+            $('#form-mk2').addClass('alert-danger');
+        }
+        else {
+                $('#form-mk2').removeClass('alert-danger');
+                $('#form-mk2').addClass('alert-success');
+        }
+    });
+
+    $('#form-mk2').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val() != $('#form-mk1').val() || $(this).val().trim().length < 6 || $(this).val().trim().length > 15) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form').submit(function (event) {
+        //console.log($('#form-makh').val());
+        if ($('#form-hoten').hasClass('alert-success') && $('#form-diachi').hasClass('alert-success') && $('#form-sdt').hasClass('alert-success') && $('#form-date').hasClass('alert-success') && ($('#form-email').hasClass('alert-success') || $('#form-email').val() == "") && $('#form-tk').hasClass('alert-success') && $('#form-mk1').hasClass('alert-success') && $('#form-mk2').hasClass('alert-success')) {
+            event.submit();
+            @*$.ajax({
+                url: "ThemKhachHang",
+                type: "POST",
+                data: $('#form').serialize(),
+            }).done(function () {
+                console.log("done");
+            }).fail(function () {
+                console.log("fail");
+            }).always(function () {
+                console.log("form submited");
+            });
+            return;*@
+        }
+        else {
+            $('#them-alert-danger').fadeIn().delay(2000).fadeOut();
+            $('#form-valid').css("display", "block");
+            console.log("prevent");
+            event.preventDefault();
+        }
+    });
+
+    $('#form').ready(function () {
+        //
+        //console.log("load form");
+        if ($('#form-hoten').val().length != 0) {
+                $('#form-hoten').removeClass('alert-danger');
+                $('#form-hoten').addClass('alert-success');
+                $('#form-diachi').removeClass('alert-danger');
+                $('#form-diachi').addClass('alert-success');
+                $('#form-sdt').removeClass('alert-danger');
+                $('#form-sdt').addClass('alert-success');
+                $('#form-date').removeClass('alert-danger');
+                $('#form-date').addClass('alert-success');
+            if ($('#form-email').val().trim().length == 0) {
+                $('#form-email').removeClass('alert-danger');
+                $('#form-email').removeClass('alert-success');
+            } else {
+                $('#form-email').removeClass('alert-danger');
+                $('#form-email').addClass('alert-success');
+            }
+                $('#form-tk').removeClass('alert-success');
+                $('#form-tk').addClass('alert-danger');
+                $('#form-mk1').removeClass('alert-danger');
+                $('#form-mk1').addClass('alert-success');
+                $('#form-mk2').removeClass('alert-danger');
+                $('#form-mk2').addClass('alert-success');
+        }
+
+    });
+
+</script>

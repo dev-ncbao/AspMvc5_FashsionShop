@@ -1,0 +1,304 @@
+﻿@model Model.KhachHang
+
+
+<style>
+
+
+    div#myEditModal .modal-content {
+        top: 1.5rem !important;
+        margin-bottom: 5.5rem !important;
+        width: 40% !important;
+        left: 30% !important;
+    }
+
+    #myEditModal {
+        overflow: auto !important;
+    }
+
+    #close-edit-icon {
+        float: right;
+    }
+
+        #close-edit-icon > :first-child {
+            margin-right: .5rem;
+        }
+
+    #flex-edit-control {
+        display: flex;
+        flex-direction: column;
+    }
+
+        #flex-edit-control span {
+            margin-left: .5rem;
+        }
+
+        #flex-edit-control input[type="date"] {
+            width: 35%;
+            display: inline;
+            margin-left: .5rem;
+        }
+
+    .modal-body {
+        color: black;
+        font-size: .9rem;
+    }
+
+    .modal-header {
+        color: #4e73df;
+        height: 3.5rem;
+    }
+
+    #radio-edit-control input {
+        margin-left: 1rem;
+    }
+
+    .modal-title {
+        width: 80% !important;
+    }
+
+    span#form-edit-valid {
+        color: red;
+        padding: .3rem !important;
+        font-size: .8rem;
+        display: none;
+        border: 1px solid red;
+    }
+
+    span#form-edit-warning {
+        color: red;
+        padding: .3rem !important;
+        font-size: .8rem;
+        display: block;
+        border: 1px solid red;
+    }
+
+    #edit-alert-danger {
+        width: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+        top: 1.5rem;
+        right: 2rem;
+        display: none;
+        z-index: 1000;
+    }
+
+    #edit-alert-danger span {
+        margin-left: .8rem;
+    }
+</style>
+
+@*Modal thêm khách hàng*@
+<div class="modal" id="myEditModal" role="dialog">
+    <div id="edit-alert-danger" class="alert alert-danger">
+        <i class="fa fa-times-circle"></i>
+        <span>Vui lòng kiểm tra lại thông tin</span>
+    </div>
+    @*Modal content*@
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">CHỈNH SỬA KHÁCH HÀNG</h4>
+            <button class="close" style="cursor: pointer" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm("ChinhSuaKhachHang", "AdminKhachHang", FormMethod.Post, new { @id = "form-edit" }))
+            {
+                <input type="hidden" value="@Model.MaKH" name="MaKH"/>
+                //
+                <div class="form-group">
+                    <span id="form-edit-warning" class="alert">Hệ thống sẽ loại bỏ khoảng trắng dư thừa ở đầu và cuối.</span>
+                </div>
+                //
+                <div class="form-group">
+                    <label>Họ tên: </label>
+                    @Html.TextBoxFor(x => x.HoTen, new { @id = "form-edit-hoten", @class = "form-control" })
+                </div>
+                //
+                <div class="form-group" id="flex-edit-control">
+                    <div id="radio-edit-control">
+                        <label>Giới tính: </label>
+                        @Html.RadioButtonFor(x => x.Phai, "Nam", Model.Phai == "Nam" ?  new { @checked = true } : null )<span>Nam</span>
+                        @Html.RadioButtonFor(x => x.Phai, "Nữ", Model.Phai == "Nữ" ? new { @checked = true } : null)<span>Nữ</span>
+                    </div>
+                    <div>
+                        <label>Ngày sinh: </label>
+                        <input id="form-edit-date" type="date" name="NgaySinh" class="form-control" value="@Convert.ToDateTime(Model.NgaySinh).ToString("yyyy-MM-dd")" />
+                    </div>
+                </div>
+                //
+                <div class="form-group">
+                    <label>Địa chỉ:</label>
+                    @Html.TextAreaFor(x => x.DiaChi, new { @class = "form-control", @id = "form-edit-diachi" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Số điện thoại:</label>
+                    @Html.TextBoxFor(x=>x.SoDienThoai,new { @class = "form-control", @id = "form-edit-sdt" })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Email: (không bắt buộc)</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "form-edit-email" })
+                </div>
+                //
+                @*<div class="form-group">
+                    <label>Tài khoản:</label>
+                    @Html.TextBoxFor(x=>x.TaiKhoan, new { @class = "form-control", @id = "form-edit-tk" })
+                </div>*@
+                //
+                <div class="form-group">
+                    <label>Mật khẩu:</label>
+                    @Html.PasswordFor(x => x.MatKhau, new { @class = "form-control", @id = "form-edit-mk1", @value = Model.MatKhau })
+                </div>
+                //
+                <div class="form-group">
+                    <label>Nhập lại mật khẩu:</label>
+                    <input id="form-edit-mk2" type="password" class="form-control" value="@Model.MatKhau" />
+                </div>
+                <div class="form-group">
+                    <span id="form-edit-valid" class="alert">Vui lòng kiểm tra các ô chưa hợp lệ hoặc chưa điền thông tin.</span>
+                </div>
+                <hr />
+                <div id="close-edit-icon">
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">Đóng</button>
+                    <button id="form-edit-submit" type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#myEditModal").fadeIn(500).modal({ backdrop: "static" });
+        $('#form-edit-hoten').removeClass('alert-danger');
+        $('#form-edit-hoten').addClass('alert-success');
+        $('#form-edit-diachi').removeClass('alert-danger');
+        $('#form-edit-diachi').addClass('alert-success');
+        $('#form-edit-sdt').removeClass('alert-danger');
+        $('#form-edit-sdt').addClass('alert-success');
+        $('#form-edit-date').removeClass('alert-danger');
+        $('#form-edit-date').addClass('alert-success');
+        if ($('#form-edit-email').val().trim().length == 0) {
+            $('#form-edit-email').removeClass('alert-danger');
+            $('#form-edit-email').removeClass('alert-success');
+        } else {
+            $('#form-edit-email').removeClass('alert-danger');
+            $('#form-edit-email').addClass('alert-success');
+        }
+        $('#form-edit-mk1').removeClass('alert-danger');
+        $('#form-edit-mk1').addClass('alert-success');
+        $('#form-edit-mk2').removeClass('alert-danger');
+        $('#form-edit-mk2').addClass('alert-success');
+    });
+
+    $('#form-hoten').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-edit-diachi').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-edit-sdt').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0 || $.isNumeric($(this).val()) == false) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-edit-date').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-edit-email').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length == 0) {
+            $(this).removeClass('alert-danger');
+            $(this).removeClass('alert-success');
+        } else if ($(this).val().indexOf('@Html.Raw("@")') == -1) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+            //console.log($(this).val());
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-edit-mk1').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val().trim().length < 6 || $(this).val().trim().length > 15) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+        if ($('#form-edit-mk2').val() != $('#form-mk1').val() || $(this).val().trim().length < 6 || $(this).val().trim().length > 15) {
+            $('#form-edit-mk2').removeClass('alert-danger');
+            $('#form-edit-mk2').addClass('alert-success');
+        }
+        else {
+                $('#form-edit-mk2').removeClass('alert-success');
+                $('#form-edit-mk2').addClass('alert-danger');
+        }
+    });
+
+    $('#form-edit-mk2').focusout(function () {
+        $(this).val($(this).val().trim());
+        if ($(this).val() != $('#form-edit-mk1').val() || $(this).val().trim().length < 6 || $(this).val().trim().length > 15) {
+            $(this).removeClass('alert-success');
+            $(this).addClass('alert-danger');
+        }
+        else {
+            $(this).removeClass('alert-danger');
+            $(this).addClass('alert-success');
+        }
+    });
+
+    $('#form-edit').submit(function (event) {
+        if ($('#form-edit-hoten').hasClass('alert-success') && $('#form-edit-diachi').hasClass('alert-success') && $('#form-edit-sdt').hasClass('alert-success') && $('#form-edit-date').hasClass('alert-success') && ($('#form-edit-email').hasClass('alert-success') || $('#form-edit-email').val() == "") && $('#form-edit-mk1').hasClass('alert-success') && $('#form-edit-mk2').hasClass('alert-success')) {
+            event.submit();
+        }
+        event.preventDefault();
+        $('#edit-alert-danger').fadeIn(300).delay(2000).hide(300);
+        $('#form-edit-valid').css("display", "block");
+        //console.log($('#form-edit-hoten').hasClass('alert-success') && $('#form-edit-diachi').hasClass('alert-success') && $('#form-edit-sdt').hasClass('alert-success') && $('#form-edit-date').hasClass('alert-success') && ($('#form-edit-email').hasClass('alert-success') || $('#form-edit-email').val() == "") && $('#form-edit-tk').hasClass('alert-success') && $('#form-edit-mk1').hasClass('alert-success') && $('#form-edit-mk2').hasClass('alert-success'));
+    });
+
+</script>

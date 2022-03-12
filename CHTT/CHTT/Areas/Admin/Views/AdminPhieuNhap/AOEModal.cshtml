@@ -1,0 +1,47 @@
+﻿@model CHTT.Areas.Admin.Models.PhieuNhapModel
+
+@{
+    Layout = null;
+}
+
+<div id="aoe-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <span>Hãy ghi nhớ <b>Mã phiếu</b> để thêm thông tin chi tiết (<b>Ấn sửa</b>).</span>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "form-pn" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false)
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MaPN, "Mã số:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.MaPN, new { @class = "form-control", @id = "mpn-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.TenNCC, "Nhà cung cấp", new { @class = "label-control" })
+                        @Html.DropDownListFor(x => x.TenNCC, new SelectList(ViewBag.NCC, "MaNCC", "TenNCC", null), "Vui lòng chọn một", new { @class = "form-control", @id = "ncc-control" })
+                        <span class="validation-message">Vui lòng chọn nhà cung cấp.</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.NgayNhap, "Ngày giờ nhập:", new { @class = "label-control" })
+                        @Html.TextBoxFor(x => x.NgayNhap, new { @class = "form-control", @id = "ngaynhap-control", @type = "datetime-local" })
+                        <span class="validation-message">Vui lòng chọn ngày giờ.</span>
+                    </div>
+
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-button">Lưu</button>
+                <button class="btn btn-dark" id="reset-button">Làm mới</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

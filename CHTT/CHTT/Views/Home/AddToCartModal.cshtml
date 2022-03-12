@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div id="atc-modal-container">
+    <div id="atc-form">
+        <div class="form-title">
+            <p class="atc-title">
+                Thêm vào giỏ hàng
+            </p>
+        </div>
+        <div class="form-content">
+            <div class="form-group">
+                <p class="product-detail-name">Tên sản phẩm</p>
+                <p class="product-detail-price">Giá sản phẩm</p>
+            </div>
+            <div class="atc-modal-flex">
+                <div class="form-group">
+                    <label class="frm-label">Size:</label>
+                    <select class="form-control" id="atc-size-control">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="frm-label">Số lượng:</label>
+                    <div class="sl-control-container">
+                        <button class="minus-button" onclick="minus()">&minus;</button>
+                        <input type="number" min="1" max="500" value="1" id="atc-sl-control" />
+                        <button class="plus-button" onclick="plus()">&plus;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="frm-atc-button">
+                    <div class="form-control" id="btn-atc">Thêm vào giỏ</div>
+                    <div class="form-control" id="btn-close-atc">Đóng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

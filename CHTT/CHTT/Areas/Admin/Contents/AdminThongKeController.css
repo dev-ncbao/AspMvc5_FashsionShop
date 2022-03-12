@@ -1,0 +1,34 @@
+﻿#ip-day-control, #ddl-day-control {
+    display: inline-block;
+    width: 14%;
+    margin: 0 .5rem;
+    min-width: 11rem;
+}
+
+#btn-liet-ke, #ddl-day-control, #ip-day-control {
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+#control-container{
+    text-align: center;
+}
+
+
+#report-wrapper, #report-list-product{
+    padding-top:2rem;
+}
+
+#report-list-product > p{
+    text-align:center;
+    padding-top: 2rem;
+}
+
+    #report-list-product table thead tr {
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    #report-list-product table tbody tr {
+        margin-bottom: 1.5rem;
+    }

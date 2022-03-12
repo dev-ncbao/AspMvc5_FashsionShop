@@ -1,0 +1,153 @@
+﻿@model Model.Library.KhachHang
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="~/Areas/Admin/Contents/AdminDonDatController.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Contents/admin-page-style.css" rel="stylesheet" />
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title-hb">Thông tin khách hàng và đơn hàng</h6>
+        <button class="btn btn-primary btn-md" id="btn-confirm-dd" @*onclick="PopupForm('@Url.Action("AddOrEdit","AdminNhaCungCap")')"*@>
+            <span>
+                Xác nhận và xuất sang hóa đơn
+            </span>
+        </button>
+        <button class="btn btn-dark btn-md" id="btn-cancel-dd" @*onclick="PopupForm('@Url.Action("AddOrEdit","AdminNhaCungCap")')"*@>
+            <span>
+                Hủy đơn
+            </span>
+        </button>
+        <button class="btn btn-outline-primary btn-md" id="btn-redirect-dd" @*onclick="PopupForm('@Url.Action("AddOrEdit","AdminNhaCungCap")')"*@>
+            <span>
+                <i class="far fa-eye"></i>
+                Xem hóa đơn
+            </span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div id="information-container">
+            <div class="flex-col-left">
+                <div class="form-group">
+                    <label class="label-control">Mã khách hàng:</label>
+                    @Html.TextBoxFor(x => x.MaKH, new { @class = "form-control", @id = "mkh-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Họ tên:</label>
+                    @Html.TextBoxFor(x => x.HoTen, new { @class = "form-control", @id = "hoten-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Giới tính:</label>
+                    @Html.TextBoxFor(x => x.Phai, new { @class = "form-control", @id = "gt-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Số điện thoại:</label>
+                    @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control", @id = "sdt-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Email:</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "email-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Địa chỉ:</label>
+                    @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control", @id = "diachi-control" })
+                </div>
+            </div>
+            <div class="flex-col-right">
+                <div class="form-group">
+                    <label class="label-control">Mã đơn đặt:</label>
+                    <input type="text" class="form-control" id="mdd-control" />
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Ngày giờ đặt hàng:</label>
+                    <input type="text" class="form-control" id="ngaydat-control" />
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Trạng thái:</label>
+                    <input type="text" class="form-control" id="trangthai-control" />
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Tổng tiền đơn hàng:</label>
+                    <input type="text" class="form-control" id="thanhtien-control" />
+                </div>
+                <div class="form-group">
+                    <label class="label-control">Ghi chú của khách:</label>
+                    <textarea class="form-control" id="gc-control" placeholder="Không có ghi chú"></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="font-weight-bold text-primary table-title">Chi tiết đơn đặt</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="CTDDTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>Mã SP</td>
+                        <td>Ảnh đại diện</td>
+                        <td>Tên gọi</td>
+                        <td>Số lượng</td>
+                        <td>Size</td>
+                        <td>Giá bán</td>
+                        <td>Hành động</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="aoe-container">
+    <div id="aoe-modal" class="modal fade" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">CẬP NHẬT THÔNG TIN</h4>
+                    <button type="button" class="close" id="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "form-ctdd" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false)
+                        <div class="form-group">
+                            <label class="label-control">Mã sản phẩm</label>
+                            <input type="text" id="msp-control" disabled class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="label-control">Size</label>
+                            <select id="size-control" class="form-control">
+                                
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="label-control">Số lượng</label>
+                            <input type="number" id="sl-control" value="1" class="form-control" min="1" max="500" />
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="save-button">Lưu</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<script>
+    var strMaDD = '@Html.Raw(ViewBag.MaDD)';
+</script>
+<script src="~/assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/admin/vendor/notify/notify.min.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/admin-page-script.js"></script>
+<script src="~/Areas/Admin/Scripts/controllers/AdminDonDatDetailController.js"></script>

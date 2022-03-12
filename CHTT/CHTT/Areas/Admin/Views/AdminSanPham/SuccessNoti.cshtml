@@ -1,0 +1,28 @@
+﻿<style>
+    #add-alert-success {
+        width: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+        top: 1.5rem;
+        right: 2rem;
+        display: block;
+        z-index: 2000;
+    }
+
+        #add-alert-success span {
+            margin-left: .8rem;
+        }
+</style>
+
+<div id="add-alert-success" class="alert alert-success">
+    <i class="fa fa-check-circle"></i>
+    <span>@Model</span>
+</div>
+
+<script>
+    $("#add-alert-success").delay(2000).fadeOut(500);
+</script>
+
